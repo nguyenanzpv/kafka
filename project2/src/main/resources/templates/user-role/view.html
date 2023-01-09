@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Role View</title>
+</head>
+<body>
+<h1>User Role Info</h1>
+<div>
+    <input type="number" name="id" th:value="${role.id}" readonly>
+</div>
+<div>
+    <input type="text" name="role" th:value="${role.role}" readonly>
+</div>
+<div>
+    <input type="text" name="userId" th:value="${role.userId}" readonly>
+</div>
+</body>
+</html>

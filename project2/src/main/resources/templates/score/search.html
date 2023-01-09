@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Score list</title>
+</head>
+<body>
+<a th:href="@{/score/new}">Add</a>
+<form th:action="@{/score/search}" method="get">
+    <div>
+        <input type="number" name="id" placeholder="Enter id ..." th:value="${id}">
+        <input type="number" name="score" placeholder="Enter score ..." th:value="${score}">
+        <input type="number" name="page" placeholder="Enter page ..." th:value="${page}" >
+        <input type="number" name="size" placeholder="Enter size ..." th:value="${size}">
+
+<!--        <select name="userId">
+            <option value="">&#45;&#45;&#45;&#45;Chon&#45;&#45;&#45;&#45;</option>
+            <option th:each="s : ${userList}" th:value="${s.userId}" th:text="${s.name}" th:selected="${s.id == userId}"></option>
+        </select>-->
+
+        <button type="submit">Search</button>
+    </div>
+
+</form>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Check</th>
+        <th>Id</th>
+        <th>Score</th>
+        <th>Student</th>
+        <th>Course</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <form th:action="@{/score/delete-all}" th:object="${scores}">
+        <tr th:each="s:${scores}">
+            <td><input type="checkbox" name="cid[]" th:value="${s.id}"/></td>
+            <td th:text="${s.id}"></td>
+            <td th:text="${s.score}">
+            <td th:text="${s.studentId}">
+            <td th:text="${s.courseId}">
+            <td> <a th:href="@{'/score/edit?id='+${s.id}}">Edit</a>|
+                <a th:href="@{'/score/delete?id='+${s.id}}">Delete</a>
+                <a th:href="@{'/score/get/'+${s.id}}">View</a>
+            </td>
+        </tr>
+    </form>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="9">
+            Tổng <span th:text="${count}"></span> bản ghi trong <span th:text="${totalPage}"> trang</span>
+        </td>
+    </tr>
+    <input type="submit" value="Delete All"/>
+    </tfoot>
+</table>
+</body>
+</html>

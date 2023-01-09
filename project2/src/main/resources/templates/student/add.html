@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Student</title>
+</head>
+<body>
+<form th:action="@{/student/new}" method="Post">
+    <div>
+        <input type="text" name="studentCode"  placeholder="Enter studentCode...">
+    </div>
+    <select name="id">
+        <option value="">----Chon user----</option>
+        <option th:each="s : ${userList}" th:value="${s.id}" th:text="${s.name}" th:selected="${s.id == id}"></option>
+    </select>
+    <div>
+        <button type="submit">Create</button>
+    </div>
+
+</form>
+</body>
+</html>

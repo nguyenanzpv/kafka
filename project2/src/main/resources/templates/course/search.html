@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Course List</title>
+</head>
+<body>
+<a th:href="@{/course/new}">Add new</a>
+
+<form th:action="@{/course/search}" method="get">
+    <input type="text" name="name" placeholder="Enter name..." th:value="${name}">
+    <input type="text" name="page" placeholder="Enter page..." th:value="${page}">
+
+    <select name="size">
+        <option th:selected="${size == 5}" value="5">5</option>
+        <option th:selected="${size == 10}" value="10">10</option>
+    </select>
+
+    <button type="submit">Search</button>
+</form>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Check</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <form th:action="@{/course/delete-all}" th:object="${courses}">
+        <tr th:each="d : ${courses}">
+            <td><input type="checkbox" name="cid[]" th:value="${d.id}"/></td>
+            <td th:text="${d.id}"></td>
+            <td th:text="${d.name}"></td>
+            <td>
+                <a th:href="@{'/course/get/' + ${d.id}}">View</a>
+                <a th:href="@{'/course/edit?id=' + ${d.id}}">Edit</a>
+                <a th:href="@{'/course/delete?id=' + ${d.id}}">Delete</a>
+            </td>
+        </tr>
+        <input type="submit" value="Delete All"/>
+    </form>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            Tổng <span th:text="${count}"></span> bản ghi trong <span th:text="${totalPage}"> trang</span>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+</body>
+</html>

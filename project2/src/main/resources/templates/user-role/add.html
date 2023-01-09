@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add user role</title>
+</head>
+<body>
+<form th:action="@{/user-role/new}" method="post" enctype="multipart/form-data">
+    <div>
+        <input type="radio" name="role" value="ROLE_ADMIN"/> ROLE_ADMIN
+    </div>
+    <div>
+        <input type="radio" name="role" value="ROLE_MEMBER"/> ROLE_MEMBER
+    </div>
+    <div>
+        <input type="text" name="userId" placeholder="Enter UserId...."/>
+    </div>
+    <div>
+        <button type="submit">Create</button>
+    </div>
+</form>
+</body>
+</html>

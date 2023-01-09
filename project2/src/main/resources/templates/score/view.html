@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Score info</title>
+</head>
+<body>
+<div>
+    <input type="text" name="score"  th:value="${score.score}">
+
+</div>
+<select name="id">
+    <option value="">----Chon user----</option>
+    <option th:each="s : ${studentList}" th:value="${s.id}" th:text="${s.studentCode}" th:selected="${s.id == score.studentId}"></option>
+</select>
+<select name="id">
+    <option value="">----Chon course----</option>
+    <option th:each="s : ${courseList}" th:value="${s.id}" th:text="${s.name}" th:selected="${s.id == score.courseId}"></option>
+</select>
+<div>
+    <button type="submit">Create</button>
+</div>
+</body>
+</html>

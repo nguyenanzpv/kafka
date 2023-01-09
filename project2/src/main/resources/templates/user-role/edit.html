@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User role</title>
+</head>
+<body>
+<form th:action="@{/user-role/edit}" method="post" enctype="multipart/form-data">
+    <div>
+        <input type="text" name="id" th:value="${userRole.id}" readonly/>
+    </div>
+    <div>
+        <input type="text" name="id" th:value="${userRole.userId}" readonly/>
+    </div>
+    <div>
+        <input type="radio" name="role" value ="ROLE_ADMIN"  th:checked="${userRole.role == 'ROLE_ADMIN'}"/> ROLE_ADMIN
+    </div>
+
+    <div>
+        <input type="radio" name="role" value ="ROLE_MEMBER"  th:checked="${userRole.role == 'ROLE_MEMBER'}"/> ROLE_MEMBER
+    </div>
+
+    <div>
+        <button type="submit">Edit</button>
+    </div>
+</form>
+</body>
+</html>

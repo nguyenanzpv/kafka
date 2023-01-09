@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Score</title>
+</head>
+<body>
+<form th:object="${score}" th:action="@{/score/edit}" method="post">
+    <div>
+        <input type="number" name="id"
+               th:field="*{id}"
+               placeholder="Enter id..." readonly>
+    </div>
+    <div>
+        <input type="text" name="score"
+               th:field="*{score}"
+               placeholder="Enter score...">
+        <p th:errors="*{score}"></p>
+    </div>
+
+    <div>
+        <button type="submit">Update</button>
+    </div>
+</form>
+</body>
+</html>

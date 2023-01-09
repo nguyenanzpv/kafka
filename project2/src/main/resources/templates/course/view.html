@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Info</title>
+</head>
+<body>
+<div>
+    <input type="number" name="id" th:value="${course.id}" readonly/>
+</div>
+<div>
+    <input type="text" name="name" th:value="${course.name}" readonly/>
+</div>
+</body>
+</html>

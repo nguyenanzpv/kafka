@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Edit</title>
+</head>
+<body>
+<h1>Edit User</h1>
+
+<form th:action="@{/user/edit}" method="post" enctype="multipart/form-data">
+    <div>
+        <input type="text" name="id" th:value="${user.id}"/>
+    </div>
+    <div>
+        <input type="text" name="name" th:value="${user.name}"/>
+    </div>
+    <div>
+        <input type="text" name="birthdate" th:value="${#dates.format(user.birthdate, 'dd/MM/yyyy')}"/>
+    </div>
+    <div>
+        <input type="text" name="username" th:value="${user.username}"/>
+    </div>
+    <div>
+        <img th:src="@{'/user/download?filename=' + ${user.avatar}}"/>
+        <input type="file" name="file" accept="image/*"/>
+    </div>
+    <!--<div>
+        <input type="checkbox" name="userRoles[0].role" th:value="ROLE_ADMIN"> ROLE_ADMIN
+    </div>
+    <div>
+        <input type="checkbox" name="userRoles[1].role" avalue="ROLE_STUDENT">ROLE_STUDENT
+    </div>-->
+    <div>
+        <button type="submit">Edit</button>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Group</title>
+</head>
+<body>
+<form th:action="@{/group/edit}" method="post">
+    <div>
+        <input type="number" name="id" th:value="${group.id}" readonly/>
+    </div>
+    <div>
+        <input type="text" name="name" th:value="${group.name}"/>
+    </div>
+    <div th:each="s : ${group.userIds}">
+        <input type="text" name="UserIds"  th:value="${s}"/>
+    </div>
+    <div>
+        <button type="submit">Create</button>
+    </div>
+</form>
+</body>
+</html>

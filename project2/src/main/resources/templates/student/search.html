@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+</head>
+<body>
+<a th:href="@{/student/new}">Add</a>
+<form th:action="@{/student/search}" method="get">
+    <div>
+        <input type="text" name="studentCode" placeholder="Enter studentCode ..." th:value="${studentCode}">
+        <input type="text" name="userId" placeholder="Enter userId ..." th:value="${userId}">
+        <input type="number" name="page" placeholder="Enter page ..." th:value="${page}" >
+        <input type="number" name="size" placeholder="Enter size ..." th:value="${size}">
+
+        <select name="id">
+            <option value="">----Chon----</option>
+            <option th:each="s : ${userList}" th:value="${s.id}" th:text="${s.name}" th:selected="${s.id == id}"></option>
+        </select>
+
+        <button type="submit">Search</button>
+    </div>
+
+</form>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Check</th>
+        <th>Id</th>
+        <th>StudentCode</th>
+        <th>User</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <form th:action="@{/student/delete-all}" th:object="${students}">
+    <tr th:each="s:${students}">
+        <td><input type="checkbox" name="cid[]" th:value="${s.id}"/></td>
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.studentCode}">
+        <td th:text="${s.userName}">
+        <td> <a th:href="@{'/student/edit?id='+${s.id}}">Edit</a>|
+            <a th:href="@{'/student/delete-code?studentCode='+${s.studentCode}}">Delete</a>
+            <a th:href="@{'/student/get/'+${s.id}}">View</a>
+        </td>
+    </tr>
+    </form>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="9">
+            Tổng <span th:text="${count}"></span> bản ghi trong <span th:text="${totalPage}"> trang</span>
+        </td>
+    </tr>
+    <input type="submit" value="Delete All"/>
+    </tfoot>
+</table>
+</body>
+</html>

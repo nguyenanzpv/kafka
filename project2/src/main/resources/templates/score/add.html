@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Score</title>
+</head>
+<body>
+<form th:action="@{/score/new}" method="Post">
+    <div>
+        <input type="number" name="score"  placeholder="Enter score...">
+    </div>
+    <div>
+        <input type="text" name="userId"  placeholder="Enter userId...">
+    </div>
+    <div>
+        <input type="text" name="courseId"  placeholder="Enter courseId...">
+    </div>
+    <div>
+        <button type="submit">Create</button>
+    </div>
+
+</form>
+</body>
+</html>

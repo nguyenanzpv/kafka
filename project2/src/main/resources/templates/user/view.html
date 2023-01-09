@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User View</title>
+</head>
+<body>
+<h1>User Info</h1>
+    <div>
+        <input type="number" name="id" th:value="${user.id}" readonly>
+    </div>
+    <div>
+        <input type="text" name="name" th:value="${user.name}" readonly>
+    </div>
+    <div>
+        <input type="text" name="username" th:value="${user.username}" readonly>
+    </div>
+    <div>
+        <input type="text" name="password" th:value="${user.password}" readonly>
+    </div>
+    <div>
+        <img th:src="@{'/user/download?filename=' + ${user.avatar}}" width="100px" height="50px"/>
+    </div>
+</body>
+</html>

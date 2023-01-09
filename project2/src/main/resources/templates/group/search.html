@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Group</title>
+</head>
+<body>
+<a th:href="@{/group/new}">Add new</a>
+
+<form th:action="@{/group/search}" method="get">
+    <input type="text" name="id" placeholder="Enter id..." th:value="${id}">
+    <input type="text" name="name" placeholder="Enter name..." th:value="${name}">
+    <input type="text" name="userId" placeholder="Enter userId..." th:value="${userId}">
+    <input type="text" name="page" placeholder="Enter page..." th:value="${page}">
+
+    <select name="size">
+        <option th:selected="${size == 5}" value="5">5</option>
+        <option th:selected="${size == 10}" value="10">10</option>
+    </select>
+
+    <button type="submit">Search</button>
+</form>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Check</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <form th:action="@{/group/delete-all}" th:object="${groups}">
+        <tr th:each="d : ${groups}">
+            <td><input type="checkbox" name="cid[]" th:value="${d.id}"/></td>
+            <td th:text="${d.id}"></td>
+            <td th:text="${d.name}"></td>
+            <td>
+                <a th:href="@{'/group/get/' + ${d.id}}">View</a>
+                <a th:href="@{'/group/edit?id=' + ${d.id}}">Edit</a>
+                <a th:href="@{'/group/delete?id=' + ${d.id}}">Delete</a>
+            </td>
+        </tr>
+        <input type="submit" value="Delete All"/>
+    </form>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            Tổng <span th:text="${count}"></span> bản ghi trong <span th:text="${totalPage}"> trang</span>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+</body>
+</html>
